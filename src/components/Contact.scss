@@ -1,0 +1,90 @@
+@import '../variables';
+@import '../mixins';
+
+.contact {
+  background-color: $color-white;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-xxl;
+  margin-top: $spacing-xl;
+
+  @include respond-to(tablet) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+.contact-info {
+  h3 {
+    font-size: 1.8rem;
+    color: $color-primary;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.info-item {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  align-items: flex-start;
+
+  .icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  h4 {
+    color: $color-primary;
+    font-size: 1.1rem;
+    margin-bottom: $spacing-xs;
+  }
+
+  p {
+    color: $color-text;
+    opacity: 0.9;
+    margin: 0.25rem 0;
+  }
+}
+
+.contact-form {
+  background-color: $color-light;
+  padding: 2.5rem;
+  border-radius: $radius-lg;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+
+  .btn {
+    width: 100%;
+    margin-top: $spacing-sm;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    color: $color-primary;
+    font-weight: 500;
+    margin-bottom: $spacing-xs;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.8rem $spacing-sm;
+    border: 2px solid $color-accent;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: $color-white;
+
+    &:focus {
+      outline: none;
+      border-color: $color-secondary;
+    }
+  }
+}

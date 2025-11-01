@@ -1,0 +1,43 @@
+@import '../variables';
+@import '../mixins';
+
+.services {
+  background-color: $color-white;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
+
+.service-card {
+  @include card;
+  text-align: center;
+  padding: 2.5rem $spacing-lg;
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: $spacing-sm;
+}
+
+.service-card {
+  h3 {
+    color: $color-primary;
+    font-size: 1.5rem;
+    margin-bottom: $spacing-sm;
+  }
+
+  p {
+    color: $color-text;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+}
