@@ -1,0 +1,295 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.Footer {
+  background: linear-gradient(
+    180deg,
+    rgba($color-secondary-dark, 0.95) 0%,
+    darken($color-secondary-dark, 5%) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  margin-top: $spacing-5xl;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      $color-accent 50%,
+      transparent 100%
+    );
+  }
+
+  &__main {
+    padding: $spacing-5xl 0 $spacing-4xl;
+
+    @include respond-to(md) {
+      padding: $spacing-4xl 0 $spacing-3xl;
+    }
+  }
+
+  &__container {
+    @include container;
+  }
+
+  // Top Section
+  &__top {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: $spacing-5xl;
+    margin-bottom: $spacing-4xl;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr;
+      gap: $spacing-4xl;
+    }
+  }
+
+  // Brand Section
+  &__brand-section {
+    max-width: 480px;
+  }
+
+  &__brand-title {
+    font-family: $font-primary;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin-bottom: $spacing-2xs;
+    letter-spacing: -0.02em;
+
+    @include respond-to(md) {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__brand-subtitle {
+    font-size: $font-size-sm;
+    color: $color-accent;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__brand-description {
+    font-size: $font-size-base;
+    color: rgba($color-white, 0.85);
+    line-height: 1.7;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__social {
+    display: flex;
+    gap: $spacing-md;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    background: rgba($color-white, 0.1);
+    color: $color-white;
+    transition: all 0.3s ease;
+    font-size: $font-size-lg;
+
+    &:hover {
+      background: $color-accent;
+      color: $color-secondary-dark;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba($color-accent, 0.4);
+    }
+  }
+
+  // Contact Cards Grid
+  &__contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+
+    @include respond-to(md) {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+  }
+
+  &__contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    padding: $spacing-lg;
+    background: rgba($color-white, 0.08);
+    border-radius: $radius-lg;
+    border: 1px solid rgba($color-white, 0.15);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      border-color: rgba($color-accent, 0.6);
+      background: rgba($color-white, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba($color-black, 0.3);
+    }
+  }
+
+  &__contact-card-icon {
+    font-size: $font-size-xl;
+    color: $color-accent;
+    margin-bottom: $spacing-2xs;
+  }
+
+  &__contact-card-label {
+    font-size: $font-size-xs;
+    color: rgba($color-white, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__contact-card-value {
+    font-size: $font-size-sm;
+    color: $color-white;
+    font-weight: $font-weight-medium;
+  }
+
+  // Divider
+  &__divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($color-white, 0.2) 50%,
+      transparent 100%
+    );
+    margin: $spacing-3xl 0;
+
+    @include respond-to(md) {
+      margin: $spacing-2xl 0;
+    }
+  }
+
+  // Bottom Section
+  &__bottom-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-4xl;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr;
+      gap: $spacing-3xl;
+    }
+  }
+
+  // Navigation
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__nav-label {
+    font-size: $font-size-xs;
+    color: rgba($color-white, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+  }
+
+  &__nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    background: transparent;
+    border: 1px solid rgba($color-white, 0.2);
+    border-radius: $radius-md;
+    color: $color-white;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba($color-accent, 0.15);
+      border-color: $color-accent;
+      color: $color-accent;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__nav-link-icon {
+    font-size: $font-size-xs;
+    transition: transform 0.3s ease;
+
+    .Footer__nav-link:hover & {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  // Specialties
+  &__specialties {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__specialties-label {
+    font-size: $font-size-xs;
+    color: rgba($color-white, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__specialties-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &__specialty-tag {
+    padding: $spacing-2xs $spacing-md;
+    background: rgba($color-accent, 0.15);
+    color: $color-accent;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    border-radius: $radius-pill;
+    white-space: nowrap;
+  }
+
+  // Bottom Bar
+  &__bottom-bar {
+    padding: $spacing-xl 0;
+    border-top: 1px solid rgba($color-white, 0.1);
+    background: rgba($color-black, 0.2);
+  }
+
+  &__bottom-bar-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__copyright {
+    font-size: $font-size-sm;
+    color: rgba($color-white, 0.6);
+  }
+}

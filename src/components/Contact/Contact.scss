@@ -1,0 +1,394 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+// ========================================
+// CONTACT COMPONENT - BEM Methodology
+// ========================================
+.Contact {
+  @include section-spacing;
+  background-color: $color-bg-primary;
+
+  &__container {
+    @include container;
+  }
+
+  // ========================================
+  // SECTION HEADER
+  // ========================================
+  &__header {
+    text-align: center;
+    max-width: $max-width-3xl;
+    margin: 0 auto $spacing-6xl;
+
+    @include respond-to(md) {
+      margin-bottom: $spacing-4xl;
+    }
+  }
+
+  &__tagline {
+    display: inline-block;
+    padding: $spacing-xs $spacing-lg;
+    background-color: rgba($color-secondary, 0.1);
+    color: $color-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+    border-radius: $radius-pill;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__title {
+    @include heading-primary;
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-xl;
+
+    @include respond-to(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__description {
+    @include text-elegant;
+    font-size: $font-size-lg;
+    color: $color-text-light;
+    line-height: $line-height-relaxed;
+    margin: 0;
+
+    @include respond-to(md) {
+      font-size: $font-size-base;
+    }
+  }
+
+  // ========================================
+  // MAIN CONTENT GRID
+  // ========================================
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-5xl;
+    margin-bottom: $spacing-6xl;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr;
+      gap: $spacing-4xl;
+    }
+  }
+
+  // ========================================
+  // CONTACT INFO SECTION
+  // ========================================
+  &__info {
+    @include flex-column;
+    gap: $spacing-3xl;
+  }
+
+  &__info-cards {
+    @include flex-column;
+    gap: $spacing-lg;
+  }
+
+  &__info-card {
+    @include card-base;
+    display: flex;
+    gap: $spacing-lg;
+    padding: $spacing-xl;
+    transition: all $transition-base $ease-out-quad;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      transform: translateX(8px);
+      box-shadow: $shadow-lg;
+
+      .Contact__info-icon-wrapper {
+        background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-dark 100%);
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__info-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    @include flex-center;
+    background: linear-gradient(135deg, $color-secondary-light 0%, $color-secondary 100%);
+    border-radius: $radius-lg;
+    transition: all $transition-base;
+  }
+
+  &__info-icon {
+    font-size: $font-size-2xl;
+    color: $color-white;
+  }
+
+  &__info-content {
+    flex: 1;
+  }
+
+  &__info-title {
+    @include heading-secondary;
+    font-size: $font-size-lg;
+    color: $color-text;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__info-detail {
+    @include body-text;
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    margin: $spacing-xs 0;
+    line-height: $line-height-relaxed;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  // Map Section
+  &__map {
+    position: relative;
+    border-radius: $radius-2xl;
+    overflow: hidden;
+    box-shadow: $shadow-xl;
+    height: 350px;
+  }
+
+  &__map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba($color-secondary, 0.4) 0%,
+      rgba($color-secondary-dark, 0.3) 100%
+    );
+  }
+
+  &__map-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    @include flex-center;
+    background: $color-white;
+    border-radius: $radius-round;
+    box-shadow: $shadow-2xl, 0 0 0 8px rgba($color-white, 0.3);
+    animation: pulse 2s infinite;
+  }
+
+  &__map-marker-icon {
+    font-size: $font-size-3xl;
+    color: $color-secondary;
+  }
+
+  // ========================================
+  // CONTACT FORM
+  // ========================================
+  &__form-wrapper {
+    @include card-base;
+    padding: $spacing-3xl;
+
+    @include respond-to(md) {
+      padding: $spacing-2xl;
+    }
+  }
+
+  &__form-header {
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__form-title {
+    @include heading-secondary;
+    font-size: $font-size-2xl;
+    color: $color-text;
+    margin-bottom: $spacing-md;
+  }
+
+  &__form-subtitle {
+    @include text-elegant;
+    font-size: $font-size-base;
+    color: $color-text-light;
+    margin: 0;
+  }
+
+  &__form {
+    @include flex-column;
+    gap: $spacing-xl;
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+
+    @include respond-to(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__form-group {
+    @include flex-column;
+    gap: $spacing-sm;
+  }
+
+  &__form-label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-family: $font-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wide;
+  }
+
+  &__form-label-icon {
+    font-size: $font-size-base;
+    color: $color-secondary;
+  }
+
+  &__form-input,
+  &__form-textarea {
+    width: 100%;
+    padding: $spacing-lg $spacing-xl;
+    font-family: $font-secondary;
+    font-size: $font-size-base;
+    color: $color-text;
+    background-color: $color-bg-secondary;
+    border: 2px solid $border-color-light;
+    border-radius: $radius-lg;
+    transition: all $transition-base;
+
+    &::placeholder {
+      color: $color-text-lighter;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-secondary;
+      background-color: $color-white;
+      box-shadow: 0 0 0 4px rgba($color-secondary, 0.1);
+    }
+
+    &:hover {
+      border-color: rgba($color-secondary, 0.3);
+    }
+  }
+
+  &__form-textarea {
+    resize: vertical;
+    min-height: 150px;
+    line-height: $line-height-relaxed;
+  }
+
+  &__form-submit {
+    @include button-primary;
+    @include button-hover-lift;
+    @include flex-center;
+    gap: $spacing-md;
+    padding: $spacing-lg $spacing-3xl;
+    font-size: $font-size-base;
+    margin-top: $spacing-lg;
+    cursor: pointer;
+
+    &:hover {
+      .Contact__form-submit-icon {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  &__form-submit-icon {
+    font-size: $font-size-xl;
+    transition: transform $transition-base;
+  }
+
+  // ========================================
+  // EMERGENCY BANNER
+  // ========================================
+  &__emergency {
+    @include flex-between;
+    gap: $spacing-3xl;
+    padding: $spacing-3xl;
+    background: linear-gradient(135deg,
+      rgba($color-secondary, 0.1) 0%,
+      rgba($color-secondary-dark, 0.08) 100%
+    );
+    border: 2px solid rgba($color-secondary, 0.2);
+    border-radius: $radius-2xl;
+
+    @include respond-to(md) {
+      flex-direction: column;
+      text-align: center;
+      padding: $spacing-2xl;
+    }
+  }
+
+  &__emergency-content {
+    flex: 1;
+  }
+
+  &__emergency-title {
+    @include heading-secondary;
+    font-size: $font-size-2xl;
+    color: $color-text;
+    margin-bottom: $spacing-md;
+  }
+
+  &__emergency-text {
+    @include body-text;
+    font-size: $font-size-base;
+    color: $color-text-light;
+    margin: 0;
+    line-height: $line-height-relaxed;
+  }
+
+  &__emergency-button {
+    @include button-base;
+    @include button-hover-lift;
+    padding: $spacing-lg $spacing-2xl;
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+    color: $color-white;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: $shadow-lg;
+
+    &:hover {
+      background: linear-gradient(135deg, #c53030 0%, #9b2c2c 100%);
+      box-shadow: $shadow-xl, 0 0 24px rgba(#e53e3e, 0.4);
+    }
+
+    @include respond-to(md) {
+      width: 100%;
+    }
+  }
+}
+
+// Pulse Animation for Map Marker
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}

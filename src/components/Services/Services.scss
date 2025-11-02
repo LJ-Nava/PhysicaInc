@@ -1,0 +1,559 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+// ========================================
+// SERVICES - MODERN BENTO GRID DESIGN
+// ========================================
+.Services {
+  padding: $spacing-2xl 0 $spacing-6xl;
+  background: linear-gradient(180deg, $color-white 0%, rgba($color-bg-secondary, 0.3) 100%);
+  position: relative;
+  overflow: hidden;
+
+  @include respond-to(md) {
+    padding: $spacing-xl 0 $spacing-4xl;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  // ========================================
+  // HERO SECTION - Modern Gradient Header
+  // ========================================
+  &__hero {
+    text-align: center;
+    margin-bottom: $spacing-4xl;
+    position: relative;
+
+    @include respond-to(md) {
+      margin-bottom: $spacing-3xl;
+    }
+  }
+
+  &__hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__hero-badge {
+    display: inline-block;
+    padding: $spacing-xs $spacing-xl;
+    background: linear-gradient(135deg, rgba($color-secondary, 0.1) 0%, rgba($color-accent, 0.1) 100%);
+    color: $color-secondary;
+    font-family: $font-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: $radius-pill;
+    margin-bottom: $spacing-lg;
+    border: 1px solid rgba($color-secondary, 0.2);
+  }
+
+  &__hero-title {
+    font-family: $font-primary;
+    font-size: clamp($font-size-3xl, 5vw, $font-size-5xl);
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    line-height: 1.1;
+    margin-bottom: $spacing-lg;
+
+    @include respond-to(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__hero-title-highlight {
+    background: linear-gradient(135deg, $color-secondary 0%, $color-accent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__hero-description {
+    font-family: $font-secondary;
+    font-size: $font-size-md;
+    color: $color-text-light;
+    font-weight: $font-weight-medium;
+
+    @include respond-to(md) {
+      font-size: $font-size-sm;
+    }
+  }
+
+  // ========================================
+  // BENTO GRID - Asymmetric Layout
+  // ========================================
+  &__bento {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: $spacing-lg;
+    margin-bottom: $spacing-4xl;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+
+  // ========================================
+  // FEATURE CARD - Large Hero Card
+  // ========================================
+  &__feature-card {
+    grid-column: span 7;
+    background: $color-white;
+    border-radius: $radius-2xl;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba($color-black, 0.08);
+    position: relative;
+    min-height: 320px;
+
+    @include respond-to(lg) {
+      grid-column: span 12;
+      min-height: 280px;
+    }
+  }
+
+  &__feature-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__feature-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($color-black, 0.75);
+  }
+
+  &__feature-content {
+    position: relative;
+    z-index: 2;
+    padding: $spacing-xl;
+    color: $color-white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    @include respond-to(md) {
+      padding: $spacing-lg;
+    }
+  }
+
+  &__feature-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba($color-white, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: $radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-2xl;
+    color: $color-white;
+    margin-bottom: $spacing-sm;
+    border: 1px solid rgba($color-white, 0.4);
+    box-shadow: 0 4px 16px rgba($color-black, 0.3);
+  }
+
+  &__feature-title {
+    font-family: $font-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin-bottom: $spacing-xs;
+    line-height: 1.2;
+    text-shadow: 0 2px 12px rgba($color-black, 0.8);
+
+    @include respond-to(md) {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__feature-description {
+    font-family: $font-secondary;
+    font-size: $font-size-sm;
+    color: $color-white;
+    line-height: 1.5;
+    margin-bottom: $spacing-sm;
+    opacity: 1;
+    text-shadow: 0 2px 8px rgba($color-black, 0.8);
+  }
+
+  &__feature-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+  }
+
+  &__feature-tag {
+    padding: $spacing-xs $spacing-md;
+    background: rgba($color-white, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: $radius-pill;
+    font-family: $font-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-white;
+    border: 1px solid rgba($color-white, 0.4);
+    text-shadow: 0 1px 4px rgba($color-black, 0.5);
+  }
+
+  // ========================================
+  // SPLIT SECTION - Two Column Cards
+  // ========================================
+  &__split-section {
+    grid-column: span 5;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+
+    @include respond-to(lg) {
+      grid-column: span 12;
+    }
+  }
+
+  &__split-card {
+    background: $color-white;
+    border-radius: $radius-xl;
+    padding: $spacing-lg;
+    box-shadow: 0 2px 12px rgba($color-black, 0.06);
+    border: 1px solid rgba($color-secondary, 0.1);
+
+    @include respond-to(md) {
+      padding: $spacing-md;
+    }
+  }
+
+  &__split-visual {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__split-icon {
+    font-size: 36px;
+    color: $color-secondary;
+  }
+
+  &__split-number {
+    font-family: $font-primary;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: rgba($color-secondary, 0.12);
+  }
+
+  &__split-title {
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin-bottom: $spacing-2xs;
+    line-height: 1.2;
+  }
+
+  &__split-text {
+    font-family: $font-secondary;
+    font-size: $font-size-xs;
+    color: $color-text-light;
+    line-height: 1.5;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__split-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xs;
+
+    li {
+      font-family: $font-secondary;
+      font-size: 11px;
+      color: $color-secondary;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  // ========================================
+  // GALLERY - Image Grid
+  // ========================================
+  &__gallery {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__gallery-card {
+    position: relative;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    aspect-ratio: 1 / 0.9;
+    cursor: pointer;
+  }
+
+  &__gallery-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  &__gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__gallery-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($color-black, 0.75);
+  }
+
+  &__gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: $color-white;
+
+    @include respond-to(md) {
+      padding: $spacing-md;
+    }
+  }
+
+  &__gallery-icon {
+    font-size: 32px;
+    color: $color-white;
+    margin-bottom: $spacing-xs;
+    filter: drop-shadow(0 2px 8px rgba($color-black, 0.8));
+  }
+
+  &__gallery-title {
+    font-family: $font-primary;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin-bottom: $spacing-2xs;
+    line-height: 1.2;
+    text-shadow: 0 2px 12px rgba($color-black, 0.8);
+
+    @include respond-to(md) {
+      font-size: $font-size-base;
+    }
+  }
+
+  &__gallery-features {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xs;
+  }
+
+  &__gallery-badge {
+    font-family: $font-secondary;
+    font-size: $font-size-xs;
+    color: $color-white;
+    opacity: 1;
+    text-shadow: 0 2px 8px rgba($color-black, 0.8);
+  }
+
+  // ========================================
+  // ACCENT SECTION - Minimal Cards
+  // ========================================
+  &__accent-section {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+
+    @include respond-to(lg) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__accent-card {
+    background: $color-white;
+    border-radius: $radius-xl;
+    padding: $spacing-lg;
+    border: 1px solid rgba($color-secondary, 0.1);
+    box-shadow: 0 2px 8px rgba($color-black, 0.04);
+
+    @include respond-to(md) {
+      padding: $spacing-md;
+    }
+
+    &--1 {
+      background: linear-gradient(135deg, rgba($color-secondary, 0.04) 0%, $color-white 100%);
+    }
+
+    &--2 {
+      background: linear-gradient(135deg, rgba($color-accent, 0.04) 0%, $color-white 100%);
+    }
+
+    &--3 {
+      background: linear-gradient(135deg, rgba($color-primary, 0.04) 0%, $color-white 100%);
+    }
+  }
+
+  &__accent-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__accent-icon-box {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-dark 100%);
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    font-size: $font-size-lg;
+    box-shadow: 0 2px 8px rgba($color-secondary, 0.2);
+  }
+
+  &__accent-number {
+    font-family: $font-primary;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: rgba($color-secondary, 0.1);
+  }
+
+  &__accent-title {
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin-bottom: $spacing-2xs;
+    line-height: 1.3;
+  }
+
+  &__accent-description {
+    font-family: $font-secondary;
+    font-size: $font-size-xs;
+    color: $color-text-light;
+    line-height: 1.5;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__accent-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xs;
+  }
+
+  &__accent-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2xs;
+    font-family: $font-secondary;
+    font-size: 11px;
+    color: $color-text;
+    font-weight: $font-weight-medium;
+  }
+
+  &__accent-bullet {
+    width: 5px;
+    height: 5px;
+    background: $color-secondary;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  // ========================================
+  // BOTTOM CTA - Modern Design
+  // ========================================
+  &__bottom-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-3xl;
+    background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-dark 100%);
+    border-radius: $radius-2xl;
+    box-shadow: 0 8px 32px rgba($color-secondary, 0.3);
+    gap: $spacing-2xl;
+
+    @include respond-to(lg) {
+      flex-direction: column;
+      text-align: center;
+      padding: $spacing-2xl;
+    }
+  }
+
+  &__bottom-cta-content {
+    flex: 1;
+  }
+
+  &__bottom-cta-title {
+    font-family: $font-primary;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin-bottom: $spacing-xs;
+
+    @include respond-to(md) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__bottom-cta-text {
+    font-family: $font-secondary;
+    font-size: $font-size-base;
+    color: rgba($color-white, 0.9);
+    margin: 0;
+  }
+
+  &__bottom-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-lg $spacing-2xl;
+    background: $color-white;
+    color: $color-secondary;
+    border-radius: $radius-lg;
+    font-family: $font-secondary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba($color-black, 0.1);
+  }
+
+  &__bottom-cta-arrow {
+    font-size: $font-size-xl;
+  }
+}

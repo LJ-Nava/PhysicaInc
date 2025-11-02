@@ -1,0 +1,203 @@
+// Physica Inc - Main Stylesheet
+// Professional Medical Clinic Website
+
+// ========================================
+// FOUNDATION
+// ========================================
+@import './variables';
+@import './mixins';
+
+// ========================================
+// GLOBAL RESETS & BASE STYLES
+// ========================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-secondary;
+  background-color: $color-bg-primary;
+  color: $color-text;
+  line-height: $line-height-normal;
+  overflow-x: hidden;
+}
+
+// ========================================
+// TYPOGRAPHY
+// ========================================
+h1, h2, h3, h4, h5, h6 {
+  @include heading-primary;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+
+  @include respond-to(md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-4xl;
+
+  @include respond-to(md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-3xl;
+
+  @include respond-to(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+p {
+  @include body-text;
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $color-secondary;
+  text-decoration: none;
+  transition: $transition-colors;
+
+  &:hover {
+    color: $color-secondary-dark;
+  }
+
+  @include focus-visible;
+}
+
+// ========================================
+// UTILITY CLASSES (with BEM)
+// ========================================
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+  }
+}
+
+// ========================================
+// SCROLLBAR CUSTOMIZATION
+// ========================================
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-light;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-secondary;
+  border-radius: $radius-pill;
+
+  &:hover {
+    background: $color-secondary-dark;
+  }
+}
+
+// ========================================
+// SELECTION HIGHLIGHTING
+// ========================================
+::selection {
+  background-color: $color-secondary;
+  color: $color-white;
+}
+
+::-moz-selection {
+  background-color: $color-secondary;
+  color: $color-white;
+}
+
+// ========================================
+// ACCESSIBILITY
+// ========================================
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Skip to main content link
+.skip-to-main {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $color-secondary;
+  color: $color-white;
+  padding: $spacing-md;
+  z-index: $z-tooltip;
+  text-decoration: none;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// ========================================
+// PRINT STYLES
+// ========================================
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

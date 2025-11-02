@@ -1,0 +1,193 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+// ========================================
+// PREMIUM CENTERED LOGO
+// ========================================
+.Logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    180deg,
+    rgba($color-white, 0.98) 0%,
+    rgba($color-white, 0.96) 100%
+  );
+  backdrop-filter: blur(25px) saturate(200%);
+  box-shadow: 0 2px 24px rgba($color-secondary, 0.08),
+              0 1px 0 rgba($color-secondary, 0.05);
+  z-index: $z-fixed;
+  border-bottom: 1px solid rgba($color-secondary, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Scrolled state - more transparent and blurry
+  &--scrolled {
+    background: linear-gradient(
+      180deg,
+      rgba($color-white, 0.75) 0%,
+      rgba($color-white, 0.7) 100%
+    );
+    backdrop-filter: blur(35px) saturate(200%);
+    box-shadow: 0 4px 32px rgba($color-secondary, 0.12),
+                0 2px 8px rgba($color-secondary, 0.08);
+    border-bottom-color: rgba($color-secondary, 0.12);
+
+    .Logo__container {
+      padding: $spacing-lg $spacing-xl;
+
+      @include respond-to(md) {
+        padding: $spacing-md $spacing-lg;
+      }
+    }
+
+    .Logo__icon {
+      width: 56px;
+      height: 56px;
+
+      @include respond-to(md) {
+        width: 48px;
+        height: 48px;
+      }
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    .Logo__svg {
+      filter: drop-shadow(0 2px 8px rgba($color-secondary, 0.15));
+    }
+
+    .Logo__name {
+      font-size: $font-size-2xl;
+
+      @include respond-to(md) {
+        font-size: $font-size-xl;
+      }
+    }
+
+    .Logo__tagline {
+      font-size: $font-size-xs;
+      opacity: 0.85;
+
+      @include respond-to(md) {
+        font-size: 0.625rem; // 10px - smaller than xs
+      }
+    }
+  }
+
+  &__container {
+    @include container;
+    padding: $spacing-xl $spacing-2xl;
+    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include respond-to(md) {
+      padding: $spacing-lg $spacing-xl;
+    }
+  }
+
+  &__brand {
+    @include flex-center;
+    gap: $spacing-xl;
+    position: relative;
+  }
+
+  &__icon {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      background: radial-gradient(
+        circle at center,
+        rgba($color-secondary, 0.08) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    @include respond-to(md) {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  &__svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 3px 12px rgba($color-secondary, 0.18));
+    transition: filter 0.3s ease;
+  }
+
+  &__text {
+    text-align: center;
+    position: relative;
+  }
+
+  &__name {
+    font-family: $font-primary;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin: 0;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 1px 2px rgba($color-secondary, 0.05);
+    background: linear-gradient(
+      135deg,
+      $color-text 0%,
+      darken($color-text, 5%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @include respond-to(md) {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__tagline {
+    font-family: $font-accent;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-secondary;
+    margin: 0;
+    margin-top: $spacing-2xs;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.9;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        $color-accent 50%,
+        transparent 100%
+      );
+      opacity: 0.4;
+    }
+
+    @include respond-to(md) {
+      font-size: $font-size-xs;
+    }
+  }
+}

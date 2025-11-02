@@ -1,0 +1,421 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+// ========================================
+// PREMIUM SIDEBAR - Always Open on Desktop
+// ========================================
+.Header {
+  @include respond-to(md) {
+    display: none; // Hide on mobile, show mobile menu instead
+  }
+
+  &__sidebar {
+    position: fixed;
+    top: 42%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 200px;
+    background: rgba($color-white, 0.92);
+    backdrop-filter: blur(12px) saturate(160%);
+    box-shadow: $shadow-lg;
+    border-radius: $radius-xl 0 0 $radius-xl;
+    padding: $spacing-lg $spacing-md;
+    z-index: $z-sticky;
+    @include flex-column;
+    gap: 0;
+    border: 1px solid rgba($color-secondary, 0.06);
+    border-right: none;
+    transition: none;
+
+    @include respond-to(lg) {
+      width: 180px;
+      padding: $spacing-md $spacing-sm;
+    }
+  }
+
+  // Frozen state - stops scrolling with page
+  &--frozen &__sidebar {
+    position: absolute;
+    transform: translateY(-50%);
+  }
+
+  &__nav-list {
+    @include flex-column;
+    gap: 2px;
+  }
+
+  &__nav-item {
+    @include flex-between;
+    width: 100%;
+    padding: $spacing-sm $spacing-xs;
+    background: transparent;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: all $transition-base $ease-out-quad;
+    text-align: left;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 50%;
+      background: $color-secondary;
+      border-radius: 0 $radius-sm $radius-sm 0;
+      transition: width $transition-base $ease-out-quad;
+    }
+
+    &:hover {
+      background: rgba($color-secondary, 0.04);
+      transform: translateX(-3px);
+
+      .Header__nav-icon {
+        color: $color-secondary;
+        transform: scale(1.1);
+      }
+    }
+
+    &--active {
+      background: rgba($color-secondary, 0.06);
+
+      &::before {
+        width: 3px;
+      }
+
+      .Header__nav-icon {
+        color: $color-secondary;
+      }
+
+      .Header__nav-label {
+        color: $color-secondary;
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    @include focus-visible;
+  }
+
+  &__nav-icon {
+    font-size: $font-size-lg;
+    color: $color-text-light;
+    transition: all $transition-base $ease-out-quad;
+    flex-shrink: 0;
+  }
+
+  &__nav-label {
+    flex: 1;
+    margin-left: $spacing-xs;
+    font-family: $font-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text;
+    transition: all $transition-base;
+  }
+
+  &__nav-chevron {
+    font-size: $font-size-xs;
+    color: $color-text-light;
+    transition: transform $transition-base;
+    margin-left: auto;
+  }
+
+  &__nav-item-wrapper {
+    position: relative;
+
+    &:hover .Header__nav-chevron {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Dropdown Menu Styles
+  &__dropdown {
+    position: absolute;
+    top: -20px;
+    right: calc(100% + 4px);
+    z-index: $z-dropdown;
+    animation: slideInRight $transition-base $ease-out-quad;
+
+    // Invisible bridge between button and dropdown
+    &::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      bottom: -20px;
+      right: -4px;
+      width: 8px;
+      background: transparent;
+    }
+
+    @include respond-to(md) {
+      display: none; // Hide on mobile, show in mobile menu instead
+    }
+  }
+
+  &__dropdown-content {
+    background: $color-white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-2xl;
+    border: 1px solid rgba($color-secondary, 0.1);
+    padding: $spacing-sm;
+    min-width: 240px;
+    backdrop-filter: blur(12px);
+  }
+
+  &__dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-sm;
+    transition: all $transition-base;
+    text-decoration: none;
+    font-family: $font-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba($color-secondary, 0.08);
+      transform: translateX(-2px);
+
+      .Header__dropdown-icon {
+        color: $color-secondary;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__dropdown-icon {
+    font-size: $font-size-base;
+    color: $color-text-light;
+    transition: all $transition-base;
+  }
+
+  &__dropdown-label {
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__cta-button {
+    @include flex-center;
+    gap: $spacing-xs;
+    width: 100%;
+    margin-top: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-dark 100%);
+    color: $color-white;
+    border: none;
+    border-radius: $radius-sm;
+    font-family: $font-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: all $transition-base $ease-out-quad;
+    box-shadow: $shadow-sm;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg,
+        rgba($color-white, 0.15) 0%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity $transition-base;
+    }
+
+    svg {
+      font-size: $font-size-base;
+      transition: transform $transition-base;
+    }
+
+    &:hover {
+      transform: translateX(-3px);
+      box-shadow: $shadow-md, 0 0 16px rgba($color-secondary, 0.2);
+
+      &::before {
+        opacity: 1;
+      }
+
+      svg {
+        transform: rotate(8deg) scale(1.05);
+      }
+    }
+
+    @include focus-visible;
+  }
+}
+
+// ========================================
+// MOBILE MENU
+// ========================================
+.Header__mobile-toggle {
+  display: none;
+
+  @include respond-to(md) {
+    display: flex;
+    position: fixed;
+    top: $spacing-xl;
+    right: $spacing-xl;
+    z-index: 1002;
+    @include flex-center;
+    width: 56px;
+    height: 56px;
+    background: $color-white;
+    border: 2px solid rgba($color-secondary, 0.2);
+    border-radius: $radius-xl;
+    box-shadow: $shadow-lg;
+    cursor: pointer;
+    transition: all $transition-base;
+    color: $color-secondary;
+
+    &:hover {
+      background: $color-secondary;
+      color: $color-white;
+      transform: scale(1.05);
+    }
+
+    &--active {
+      background: $color-secondary;
+      color: $color-white;
+    }
+
+    @include focus-visible;
+  }
+}
+
+.Header__mobile-menu {
+  display: none;
+
+  @include respond-to(md) {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    background: $color-white;
+    box-shadow: $shadow-2xl;
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform $transition-slow $ease-out-quad;
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+}
+
+.Header__mobile-content {
+  @include flex-column;
+  gap: $spacing-sm;
+  padding: $spacing-6xl $spacing-lg;
+}
+
+.Header__mobile-item {
+  @include flex-between;
+  width: 100%;
+  padding: $spacing-lg;
+  background: transparent;
+  border: none;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+  font-family: $font-secondary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+  text-align: left;
+
+  &:hover {
+    background: rgba($color-secondary, 0.08);
+  }
+
+  &--active {
+    background: linear-gradient(135deg,
+      rgba($color-secondary, 0.12) 0%,
+      rgba($color-secondary-dark, 0.12) 100%
+    );
+    color: $color-secondary;
+  }
+
+  svg {
+    font-size: $font-size-xl;
+    margin-right: $spacing-md;
+  }
+}
+
+.Header__mobile-icon {
+  font-size: $font-size-xl;
+  color: $color-text-light;
+}
+
+.Header__mobile-cta {
+  @include flex-center;
+  gap: $spacing-md;
+  width: 100%;
+  margin-top: $spacing-xl;
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-dark 100%);
+  color: $color-white;
+  border: none;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  svg {
+    font-size: $font-size-xl;
+  }
+
+  @include focus-visible;
+}
+
+.Header__overlay {
+  display: none;
+
+  @include respond-to(md) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($color-primary-dark, 0.95);
+    z-index: 1000;
+    animation: fadeIn $transition-base;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
