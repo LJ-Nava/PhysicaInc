@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PhysicaInc/static/css/main.456b2d38.css",
-    "main.js": "/PhysicaInc/static/js/main.94524720.js",
+    "main.js": "/PhysicaInc/static/js/main.030cb5e9.js",
     "static/media/Sports-Rehabilitation.png": "/PhysicaInc/static/media/Sports-Rehabilitation.08d52e64b7dc585b2b5e.png",
     "static/media/Orthopedic-Physical-}Therapy.png": "/PhysicaInc/static/media/Orthopedic-Physical-}Therapy.ee7f79746d7812b1b291.png",
     "static/media/Chronic-Pain-Management.png": "/PhysicaInc/static/media/Chronic-Pain-Management.28c3f39a87b9a6722886.png",
@@ -12,10 +12,10 @@
     "static/media/Manual-Therapy.png": "/PhysicaInc/static/media/Manual-Therapy.5f065a1e6068c53c67e6.png",
     "index.html": "/PhysicaInc/index.html",
     "main.456b2d38.css.map": "/PhysicaInc/static/css/main.456b2d38.css.map",
-    "main.94524720.js.map": "/PhysicaInc/static/js/main.94524720.js.map"
+    "main.030cb5e9.js.map": "/PhysicaInc/static/js/main.030cb5e9.js.map"
   },
   "entrypoints": [
     "static/css/main.456b2d38.css",
-    "static/js/main.94524720.js"
+    "static/js/main.030cb5e9.js"
   ]
 }
